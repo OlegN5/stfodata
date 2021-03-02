@@ -35,7 +35,7 @@ const firebaseConfig = {
 
 
 
-db.collection("users").where("timeStart", ">", new Date('2021-02-22T09:00:00'))
+db.collection("users").where("timeStart", ">", new Date('2021-02-19T09:00:00'))
     .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -49,7 +49,7 @@ db.collection("users").where("timeStart", ">", new Date('2021-02-22T09:00:00'))
             tStart.setSeconds(my.timeStart.seconds)
             let tStop = new Date(0)
             tStop.setSeconds(my.timeStop.seconds)
-
+            console.log(`tStart`,tStart.toUTCString())
 
 
             
@@ -66,42 +66,103 @@ db.collection("users").where("timeStart", ">", new Date('2021-02-22T09:00:00'))
             let id = my.ID
             let myName = my.name
             //console.log(sdata)
+            if (full === true) {
+                full = `Целиком`
+            } else if (full === false) {
+                full = `Фрагменты`
+            }
 
-           
+
+            if (myName === `Олег`) {
+                myName = `Новиков О.`
+            } else if (myName === `Марк`) {
+                myName = `Наумов М.`
+            } else if (myName === `Костя`) {
+                myName = `Ясинский К.`
+            } else if (myName === `Саша`) {
+                myName = `Линкевич А.`
+            } else if (myName === `Сергей`) {
+                myName = `Измайлов С.`
+            }
+
+            if (id.length > 10) {
+                id = id.substring(0,15)+ `...`
+                console.log(`id`,id)
+            }
+
+            let text = `
+            <tr>
+                <td>${tStart.toDateString().split('202')[0]}</td>
+                <td>${tStart.toTimeString().split(` `)[0]}</td>
+                <td>${tStop.toTimeString().split(` `)[0]}</td>
+                <td>${id}</td>
+                <td>${Tittle}</td>
+                <td>${full}</td>
+                <td>${myName}</td>
+            </tr>`
+
+            // let text = `<div class="container">
+            // <div class="row">
+            //   <div class="col-2">
+            //   ${tStart.toDateString()}
+            //   </div>
+            //   <div class="col">
+            //   ${tStart.toTimeString().split(` `)[0]}
+            //   </div>
+            //   <div class="col-2">
+            //   ${tStop.toDateString()}
+            //   </div>
+            //   <div class="col">
+            //   ${tStop.toTimeString().split(` `)[0]}
+            //   </div>
+            //   <div class="col-sm">
+            //   ${id}
+            //   </div>
+            //   <div class="col-2">
+            //   ${Tittle}
+            //   </div>
+            //   <div class="col-sm">
+            //   ${full}
+            //   </div>
+            //   <div class="col-sm">
+            //   ${myName}
+            //   </div>
+            // </div>
+            // `
 
 
 
-            let text = `<dl class="row">
-            <dt class="col-sm-3">ID</dt>
-            <dd class="col-sm-9">${id}</dd>
+            // let text = `<dl class="row">
+            // <dt class="col-sm-3">ID</dt>
+            // <dd class="col-sm-9">${id}</dd>
 
-            <dt class="col-sm-3">Название</dt>
-            <dd class="col-sm-9">${Tittle}</dd>
+            // <dt class="col-sm-3">Название</dt>
+            // <dd class="col-sm-9">${Tittle}</dd>
 
-            <dt class="col-sm-3">Звукорежиссер</dt>
-            <dd class="col-sm-9">${myName} </dd>
+            // <dt class="col-sm-3">Звукорежиссер</dt>
+            // <dd class="col-sm-9">${myName} </dd>
 
-            <dt class="col-sm-3">начал</dt>
-            <dd class="col-sm-9">${tStart}</dd>
+            // <dt class="col-sm-3">начал</dt>
+            // <dd class="col-sm-9">${tStart}</dd>
 
-            <dt class="col-sm-3">закончил</dt>
-            <dd class="col-sm-9">${tStop}</dd>
+            // <dt class="col-sm-3">закончил</dt>
+            // <dd class="col-sm-9">${tStop}</dd>
 
-            <dt class="col-sm-3">длительность</dt>
-            <dd class="col-sm-9">${durAll}</dd>
+            // <dt class="col-sm-3">длительность</dt>
+            // <dd class="col-sm-9">${durAll}</dd>
 
-            <dt class="col-sm-3">целиком</dt>
-            <dd class="col-sm-9">${full}</dd>
+            // <dt class="col-sm-3">целиком</dt>
+            // <dd class="col-sm-9">${full}</dd>
 
-            <dt class="col-sm-3">Брак</dt>
-            <dd class="col-sm-9">${brak}</dd>
+            // <dt class="col-sm-3">Брак</dt>
+            // <dd class="col-sm-9">${brak}</dd>
 
-            <dt class="col-sm-3">Комментарий</dt>
-            <dd class="col-sm-9">${commit}</dd>
+            // <dt class="col-sm-3">Комментарий</dt>
+            // <dd class="col-sm-9">${commit}</dd>
             
-            </dl>
-            <p>--------------------------------------------------------------</p>`
-            document.querySelector('#app').insertAdjacentHTML('afterbegin', `${text}`)
+            // </dl>
+            // <p>--------------------------------------------------------------</p>`
+            document.querySelector('#data').insertAdjacentHTML('beforeend', `${text}`)
             
         });
 
