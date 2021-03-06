@@ -33,9 +33,15 @@ const firebaseConfig = {
 //         }
 // })
 
+startFind=new Date()
+duratDays = new Date(0).setUTCDate(2)
+startData = startFind - duratDays
+console.log(`startData`,new Date(startData))
 
 
-db.collection("users").where("timeStart", ">", new Date('2021-02-22T09:00:00'))
+
+
+db.collection("users").where("timeStart", ">", new Date(startData))
     .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
