@@ -67,22 +67,24 @@ db.collection("users").where("timeStart", ">", new Date('2021-02-19T09:00:00'))
             let myName = my.name
             //console.log(sdata)
             if (full === true) {
-                full = `Целиком`
+                full = `Полностью`
             } else if (full === false) {
-                full = `Фрагменты`
+                full = `Частично`
             }
 
 
             if (myName === `Олег`) {
-                myName = `Новиков О.`
+                myName = `Новиков О.А.`
             } else if (myName === `Марк`) {
-                myName = `Наумов М.`
+                myName = `Наумов М.А.`
             } else if (myName === `Костя`) {
-                myName = `Ясинский К.`
+                myName = `Ясинский К.С.`
             } else if (myName === `Саша`) {
-                myName = `Линкевич А.`
+                myName = `Линкевич А.В.`
             } else if (myName === `Сергей`) {
-                myName = `Измайлов С.`
+                myName = `Измайлов С.В`
+            } else if (myName === `Инна`) {
+                myName = `Непомнящая И.Ю.`
             }
 
             if (id.length > 10) {
