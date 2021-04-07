@@ -45,7 +45,9 @@ db.collection("users").where("timeStart", ">", new Date('2021-02-19T09:00:00'))
             console.log(doc.id, " => ", doc.data()); 
             let my = doc.data()
             console.log('my', my)
-            let tStart = new Date(0)
+            const formatter = new Intl.DateTimeFormat('ru', { month: 'short' });
+            // const month1 = formatter.format(new Date());
+            let tStart = formatter.format(new Date(0))
             tStart.setSeconds(my.timeStart.seconds)
             let tStop = new Date(0)
             tStop.setSeconds(my.timeStop.seconds)
