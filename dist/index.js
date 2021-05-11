@@ -83,14 +83,18 @@ db.collection("users").where("timeStart", ">", new Date('2021-02-19T09:00:00'))
                 myName = `Ясинский К.С.`
             } else if (myName === `Саша`) {
                 myName = `Линкевич А.В.`
+            } else if (myName === `Сергей Измайлов`) {
+                myName = `Измайлов С.В.`
             } else if (myName === `Сергей`) {
-                myName = `Измайлов С.В`
+                myName = `Измайлов С.В.`
             } else if (myName === `Инна`) {
                 myName = `Непомнящая И.Ю.`
+            } else if (myName === `Сергей Неретин`) {
+                myName = `Неретин С.Е.`
             }
 
-            if (id.length > 10) {
-                id = id.substring(0,15)+ `...`
+            if (id.length > 15) {
+                id = id.substring(0,17)+ `...`
                 console.log(`id`,id)
             }
 
