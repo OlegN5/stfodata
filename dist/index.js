@@ -35,7 +35,9 @@ const firebaseConfig = {
 
 
 
-db.collection("users").where("timeStart", ">", new Date('2021-02-19T09:00:00'))
+//db.collection("users").where("timeStart", ">", new Date('2021-02-19T09:00:00'))
+db.collection("users").where("timeStart", ">", new Date('2021-04-19T09:00:00'))
+
     .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
