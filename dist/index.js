@@ -12,6 +12,24 @@ const firebaseConfig = {
     firebase.initializeApp(firebaseConfig);
     let db = firebase.firestore();
 
+
+
+
+var chatid = "-1001476218810";
+var tokenTel = "5097081300:AAGaq_J8zZiImhfZIR1U9XjnJjvH_vKYiTI";
+var text = "Всем привет! <b>Я ваш бот</b> информатор! STFO  table date!";
+
+otpravka(tokenTel,text,chatid);
+
+function otpravka(tokenTel,text,chatid){
+  var z=$.ajax({  
+  type: "POST",  
+  url: "https://api.telegram.org/bot"+tokenTel+"/sendMessage?chat_id="+chatid,
+  data: "parse_mode=HTML&text="+encodeURIComponent(text), 
+  }); 
+ };
+
+
 // let myName
 
 
@@ -36,7 +54,7 @@ const firebaseConfig = {
 
 
 //db.collection("users").where("timeStart", ">", new Date('2021-02-19T09:00:00'))
-db.collection("users").where("timeStart", ">", new Date('2021-04-19T09:00:00'))
+db.collection("users").where("timeStart", ">", new Date('2021-12-01T09:00:00'))
 
     .get()
     .then((querySnapshot) => {
